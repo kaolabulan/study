@@ -1,0 +1,13 @@
+<script>
+export default {
+  name: "HomeHot"
+}
+</script>
+
+<template>
+  <div>我是人气推荐</div>
+</template>
+
+<style scoped>
+
+</style>
