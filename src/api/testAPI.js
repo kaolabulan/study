@@ -1,7 +1,3 @@
 import httpInstance from "@/utiles/http.js";
 
-export function getTest(){
-  return httpInstance({
-    url:'home/category/head'
-  })
-}
+export const getTest = ()=>httpInstance({url:'home/category/head',method:'get'})
