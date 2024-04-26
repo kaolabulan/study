@@ -2,8 +2,8 @@
 //createWebHistory：创建history模式的路由
 
 import { createRouter, createWebHistory } from 'vue-router'
-import login from "@/views/login/index.vue";
-import layout from "@/views/layout/index.vue";
+import Login from "@/views/Login/index.vue";
+import Layout from "@/views/Layout/index.vue";
 import Home from "@/views/Home/index.vue";
 import Category from "@/views/Category/index.vue";
 
@@ -12,7 +12,7 @@ const router = createRouter({
   routes: [
     {
       path:'/',
-      component: layout,
+      component: Layout,
       children:[
         {
           path:'',
@@ -26,7 +26,7 @@ const router = createRouter({
     },
     {
       path:'/login',
-      component:login,
+      component:Login,
     },
   ]
 })
