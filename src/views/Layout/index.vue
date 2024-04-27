@@ -15,6 +15,7 @@
   <LayoutFixed/>
   <LayoutNav/>
   <LayoutHeader/>
+<!--  <router-view :key="$route.fullPath"/>-->
   <router-view/>
   <LayoutFooter/>
 </template>
