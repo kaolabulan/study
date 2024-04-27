@@ -7,7 +7,6 @@
   const getNewGoods =async ()=>{
     let res = await reqGetNewGoods()
     newGoodsList.value = res.result
-    console.log(newGoodsList.value)
   }
   onMounted(()=>{
     getNewGoods()
