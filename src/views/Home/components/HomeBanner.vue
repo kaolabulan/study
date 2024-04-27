@@ -1,13 +1,43 @@
-<script>
-export default {
-  name: "HomeBanner"
-}
+<script setup>
+  import {reqGetBannerInfo} from "@/api/index.js";
+  import {onMounted, ref} from "vue";
+
+  const bannerList = ref([])
+  const getBannerInfo =async ()=>{
+    let res = await reqGetBannerInfo()
+    bannerList.value = res.result
+  }
+  onMounted(()=>{
+    getBannerInfo()
+  })
 </script>
 
+
+
 <template>
-  <div>我是banner</div>
+  <div class="home-banner">
+    <el-carousel height="500px">
+      <el-carousel-item v-for="item in bannerList" :key="item.id">
+        <img :src="item.imgUrl" alt="">
+      </el-carousel-item>
+    </el-carousel>
+  </div>
 </template>
 
-<style scoped>
 
+
+<style scoped lang='scss'>
+.home-banner {
+  width: 990px;
+  height: 500px;
+  position: absolute;
+  left: 250px;
+  top: 0;
+  z-index: 98;
+
+  img {
+    width: 100%;
+    height: 500px;
+  }
+}
 </style>
