@@ -1,30 +1,13 @@
 <script setup>
-  import {reqGetCategoryInfo,reqGetBannerInfo} from "@/api/index.js";
-  import {onMounted, ref} from "vue";
-  import {useRoute} from "vue-router";
   import GoodsItem from "@/views/Home/components/GoodsItem.vue";
-  //组件内路由守卫 解决路由缓存问题
-  import {onBeforeRouteUpdate} from "vue-router";
-  onBeforeRouteUpdate((to)=>{
-    getCategoryInfo(to.params.id)
-  })
+  import {useCategoryInfo} from "@/views/Category/composables/useCategoryInfo.js";
+  import {useGetBannerInfo} from "@/views/Category/composables/useGetBannerInfo.js";
+
+  const {categoryInfo}=useCategoryInfo()
+  const {bannerList} = useGetBannerInfo()
 
 
-  const route = useRoute()
-  const categoryInfo = ref({})
-  const getCategoryInfo =async (id=route.params.id)=>{
-    let res = await reqGetCategoryInfo(id)
-    categoryInfo.value=res.result
-  }
-  onMounted(()=>getCategoryInfo())
 
-  //获取banner
-  const bannerList = ref([])
-  const getBannerInfo =async ()=>{
-    let res = await reqGetBannerInfo({distributionSite:2})
-    bannerList.value = res.result
-  }
-  onMounted(()=>getBannerInfo())
 </script>
 
 <template>
