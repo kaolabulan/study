@@ -15,18 +15,21 @@ import HomePanel from "@/views/Home/components/HomePanel.vue";
   <HomeNew />
   <HomeHot />
   <HomeProduct />
-<!--  测试HomePanel-->
-  <HomePanel title="新鲜好物" sub-title="新鲜好物 好物商品">
-      <div>
-        我是新鲜好物的插槽内容
-      </div>
-  </HomePanel>
 
-  <HomePanel title="人气推荐" sub-title="人气推荐 好物商品">
-    <template #default>
-      <div>
-        我是人气推荐的插槽内容
-      </div>
-    </template>
-  </HomePanel>
+
+
+<!--&lt;!&ndash;  测试HomePanel&ndash;&gt;-->
+<!--  <HomePanel title="新鲜好物" sub-title="新鲜好物 好物商品">-->
+<!--      <div>-->
+<!--        我是新鲜好物的插槽内容-->
+<!--      </div>-->
+<!--  </HomePanel>-->
+
+<!--  <HomePanel title="人气推荐" sub-title="人气推荐 好物商品">-->
+<!--    <template #default>-->
+<!--      <div>-->
+<!--        我是人气推荐的插槽内容-->
+<!--      </div>-->
+<!--    </template>-->
+<!--  </HomePanel>-->
 </template>

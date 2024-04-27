@@ -7,3 +7,5 @@ export const reqGetBannerInfo = ()=> httpInstance.get('/home/banner')
 export const reqGetNewGoods = ()=> httpInstance.get('/home/new')
 //获取-人气推荐 /home/hot
 export const reqGetHotGoods = ()=> httpInstance.get('/home/hot')
+
+export const reqGetGoodsAPI = () => httpInstance( '/home/goods')
