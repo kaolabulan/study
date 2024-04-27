@@ -9,3 +9,5 @@ export const reqGetNewGoods = ()=> httpInstance.get('/home/new')
 export const reqGetHotGoods = ()=> httpInstance.get('/home/hot')
 
 export const reqGetGoodsAPI = () => httpInstance( '/home/goods')
+//获取-二级分类列表 /category  Query 参数 id
+export const reqGetCategoryInfo = (id)=> httpInstance({url:'/category',method:'get',params:{id}})

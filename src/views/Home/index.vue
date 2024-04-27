@@ -4,7 +4,7 @@ import HomeBanner from './components/HomeBanner.vue'
 import HomeNew from './components/HomeNew.vue'
 import HomeHot from './components/HomeHot.vue'
 import HomeProduct from "@/views/Home/components/HomeProduct.vue";
-import HomePanel from "@/views/Home/components/HomePanel.vue";
+// import HomePanel from "@/views/Home/components/HomePanel.vue";
 </script>
 
 <template>

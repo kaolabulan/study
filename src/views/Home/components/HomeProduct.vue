@@ -8,7 +8,6 @@ const goodsList = ref([])
 const getGoods =async ()=>{
   let res = await reqGetGoodsAPI()
   goodsList.value = res.result
-  console.log(goodsList.value)
 }
 onMounted(()=>{
   getGoods()
