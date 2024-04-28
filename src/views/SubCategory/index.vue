@@ -23,10 +23,14 @@
 
   const getGoodList = async ()=>{
     const res = await getSubCategoryAPI(reqData.value)
-    console.log(res)
     goodList.value = res.result.items
   }
   onMounted(()=>getGoodList())
+  const tebChange = ()=>{
+    console.log(reqData.value.sortField)
+    reqData.value.page=1
+    getGoodList()
+  }
 
 </script>
 
@@ -42,7 +46,7 @@
       </el-breadcrumb>
     </div>
     <div class="sub-container">
-      <el-tabs>
+      <el-tabs v-model="reqData.sortField" @tab-change="tebChange">
         <el-tab-pane label="最新商品" name="publishTime"></el-tab-pane>
         <el-tab-pane label="最高人气" name="orderNum"></el-tab-pane>
         <el-tab-pane label="评论最多" name="evaluateNum"></el-tab-pane>
