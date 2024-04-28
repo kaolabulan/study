@@ -16,3 +16,9 @@ export const reqGetGoodsAPI = () => httpInstance( '/home/goods')
 export const reqGetCategoryInfo = (id)=> httpInstance({url:'/category',method:'get',params:{id}})
 //获取二级分类列表数据 /category/sub/filter
 export const reqGetCategoryFilterAPI = (id)=> httpInstance({url:'/category/sub/filter',method:'get',params:{id}})
+//获取导航数据
+export const getSubCategoryAPI = (data) => httpInstance({
+  url:'/category/goods/temporary',
+  method:'POST',
+  data
+})
