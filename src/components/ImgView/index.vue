@@ -22,6 +22,9 @@ const target = ref(null)
 const { elementX, elementY, isOutside } = useMouseInElement(target)
 const left = ref(0)
 const top = ref(0)
+
+const positionX = ref(0)
+const positionY = ref(0)
 watch([elementX,elementY,isOutside],()=>{
   if (!isOutside.value){
     //有效范围内控制滑块
@@ -40,6 +43,10 @@ watch([elementX,elementY,isOutside],()=>{
     if (elementY.value>300)  top.value=200
   }
 
+  //控制大图
+  positionX.value = -left.value*2
+  positionY.value = -top.value*2
+
 })
 
 
@@ -48,7 +55,6 @@ watch([elementX,elementY,isOutside],()=>{
 
 
 <template>
-  {{elementX}},{{elementY}},{{isOutside}}
   <div class="goods-image">
     <!-- 左侧大图-->
     <div class="middle" ref="target">
@@ -65,11 +71,11 @@ watch([elementX,elementY,isOutside],()=>{
     <!-- 放大镜大图 -->
     <div class="large" :style="[
       {
-        backgroundImage: `url(${imageList[0]})`,
-        backgroundPositionX: `0px`,
-        backgroundPositionY: `0px`,
+        backgroundImage: `url(${imageList[activeIndex]})`,
+        backgroundPositionX: `${positionX}px`,
+        backgroundPositionY: `${positionY}px`,
       },
-    ]" v-show="false"></div>
+    ]" v-show="!isOutside"></div>
   </div>
 </template>
 
