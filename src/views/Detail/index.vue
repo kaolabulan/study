@@ -117,8 +117,8 @@
             </div>
             <!-- 24热榜+专题推荐 -->
             <div class="goods-aside">
-              <HotDetail/>
-              <HotDetail/>
+              <HotDetail :hot-type="1"/>
+              <HotDetail :hot-type="2"/>
 
             </div>
           </div>
