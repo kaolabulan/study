@@ -4,6 +4,7 @@
   import {onMounted, ref} from "vue";
   import HotDetail from "@/views/Detail/components/HotDetail.vue";
   import ImgView from "@/components/ImgView/index.vue"
+  import XtxGoodSku from "@/components/XtxSku/index.vue";
 
   const route = useRoute()
   const detailInfo = ref({})
@@ -34,7 +35,7 @@
           <div class="goods-info">
             <div class="media">
               <!-- 图片预览区 -->
-              <ImgView/>
+              <ImgView :image-list="detailInfo.mainPictures"/>
 
               <!-- 统计数量 -->
               <ul class="goods-sales">
@@ -84,6 +85,7 @@
                 </dl>
               </div>
               <!-- sku组件 -->
+              <XtxGoodSku :goods="detailInfo"/>
 
               <!-- 数据组件 -->
 
