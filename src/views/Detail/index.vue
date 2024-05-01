@@ -3,6 +3,7 @@
   import {useRoute} from "vue-router";
   import {onMounted, ref} from "vue";
   import HotDetail from "@/views/Detail/components/HotDetail.vue";
+  import ImgView from "@/components/ImgView/index.vue"
 
   const route = useRoute()
   const detailInfo = ref({})
@@ -33,6 +34,7 @@
           <div class="goods-info">
             <div class="media">
               <!-- 图片预览区 -->
+              <ImgView/>
 
               <!-- 统计数量 -->
               <ul class="goods-sales">
