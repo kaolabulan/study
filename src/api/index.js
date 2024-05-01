@@ -22,3 +22,15 @@ export const getSubCategoryAPI = (data) => httpInstance({
   method:'POST',
   data
 })
+//获取详情页数据
+export const reqGetDetail = (id) => httpInstance({
+  url: '/goods',
+  method:'get',
+  params: {id},
+})
+//获取热榜商品
+export const reqHotGoodsAPI = ({ id, type, limit = 3 }) => httpInstance({
+  url:'/goods/hot',
+  method:'get',
+  params:{id, type, limit},
+})
