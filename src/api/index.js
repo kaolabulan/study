@@ -34,5 +34,5 @@ export const reqHotGoodsAPI = ({ id, type, limit = 3 }) => httpInstance({
   method:'get',
   params:{id, type, limit},
 })
-//验证登录-用户名密码
+//验证登录-用户名密码  获取用户数据
 export const reqLoginAPI = ({account,password})=> httpInstance({url:'/login',method:'post',data:{account,password}})

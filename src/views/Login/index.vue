@@ -1,11 +1,14 @@
 <script setup>
   //表单校验（账号+密码）
   import {ref} from "vue";
-  import {reqLoginAPI} from "@/api/index.js";
   import {useRouter} from "vue-router";
 
   import { ElMessage } from 'element-plus'
   import 'element-plus/theme-chalk/el-message.css'
+
+  //使用pinia中 useUserStore仓库创建userStore实例
+  import {useUserStore} from "@/stores/user.js";
+  const userStore = useUserStore()
 
   //1.准备表单对象
   const form = ref({
@@ -39,8 +42,7 @@
     const {account ,password} = form.value
     formRef.value.validate(async (valid)=>{
       if (valid){
-        const res = await reqLoginAPI({account ,password})
-        console.log(res)
+        await userStore.getUserInfo({account ,password})
         //1.提示用户
         ElMessage({type:'success',message:'登录成功'})
         //2.跳转首页
