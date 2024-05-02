@@ -12,8 +12,8 @@
 
   //1.准备表单对象
   const form = ref({
-    account:'',
-    password:'',
+    account:'cdshi0003',
+    password:'123456',
     agree:true,
   })
   //2.准备规则对象
