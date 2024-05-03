@@ -3,6 +3,7 @@ import axios from "axios";
 import { ElMessage } from 'element-plus'
 import 'element-plus/theme-chalk/el-message.css'
 import {useUserStore} from "@/stores/user.js";
+import router from "@/router/index.js";
 
 const httpInstance = axios.create({
   baseURL:'http://pcapi-xiaotuxian-front-devtest.itheima.net',
@@ -30,6 +31,16 @@ httpInstance.interceptors.response.use(res => res.data, e => {
     type:'warning',
     message:e.response.data.message
   })
+  //401token失效处理
+  if (e.response.status===401){
+    //1.清除本地登录数据
+    const userStore = useUserStore()
+    userStore.userInfo = {}
+    //2.跳转登录页
+    // const router = useRouter()  只有在setup语法糖中才能使用useRouter
+    router.push('/login')
+  }
+
   return Promise.reject(e)
 })
 
