@@ -36,3 +36,18 @@ export const reqHotGoodsAPI = ({ id, type, limit = 3 }) => httpInstance({
 })
 //验证登录-用户名密码  获取用户数据
 export const reqLoginAPI = ({account,password})=> httpInstance({url:'/login',method:'post',data:{account,password}})
+// 加入购物车
+export const insertCartAPI = ({ skuId, count }) => httpInstance({
+  url: '/member/cart',
+  method: 'POST',
+  data: {
+    skuId,
+    count
+  }
+})
+//获取-购物车列表 /member/cart
+export const findNewCartListAPI = ()=>httpInstance.get('/member/cart')
+
+
+
+
