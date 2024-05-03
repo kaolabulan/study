@@ -57,7 +57,7 @@ export const delCartAPI = (ids) => httpInstance({
 })
 //合并购物车
 export const mergeCartAPI = (data)=>httpInstance({url:'/member/cart/merge',method:'post',data})
-
+export const getCheckoutInfoAPI = () => httpInstance.get('/member/order/pre')
 
 
 
