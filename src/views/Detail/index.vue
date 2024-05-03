@@ -38,8 +38,9 @@
       cartStore.addCart({
         id:detailInfo.value.id,
         name:detailInfo.value.name,
-        price:detailInfo.value.mainPictures[0],
+        picture:detailInfo.value.mainPictures[0],
         count:count.value,
+        price:skuObj.price,
         skuId:skuObj.skuId,
         attrsText:skuObj.specsText,
         selected:true

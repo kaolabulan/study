@@ -16,12 +16,19 @@ export const useCartStore = defineStore('cart',()=>{
     }else {
       cartList.value.push(goods)
     }
-
+  }
+  //删除购物车
+  const delCart = (skuId)=>{
+    //1.splice 改变原数组  2.filter 不改变原数组
+    // cartList.value = cartList.value.filter((item)=>item.skuId!==skuId)
+    const delIndex = cartList.value.findIndex((item)=>item.skuId===skuId)
+    cartList.value.splice(delIndex,1)
   }
 
   return{
     cartList,
     addCart,
+    delCart,
   }
 },{
   persist:true
