@@ -71,6 +71,9 @@ export const useCartStore = defineStore('cart',()=>{
   //单、全选
   const isAll = computed(()=>cartList.value.every(item=>item.selected))
 
+  const clearCart = ()=>{
+    cartList.value=[]
+  }
   return{
     cartList,
     allPrice,
@@ -80,6 +83,8 @@ export const useCartStore = defineStore('cart',()=>{
     isAll,
     addCart,
     delCart,
+    clearCart,
+    updateCart
   }
 },{
   persist:true

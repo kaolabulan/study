@@ -8,7 +8,7 @@ const router = useRouter()
 //点击确认触发的事件
 const confirm = ()=>{
   //1.清除当前用户信息
-  userStore.userInfo = {}
+  userStore.clearUserInfo()
   //2.跳转登录页面
   router.push('/login')
 }
