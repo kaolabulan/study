@@ -1,14 +1,23 @@
 <script setup>
 import {useCartStore} from "@/stores/cart.js";
+import {computed} from "vue";
+
 const cartStore = useCartStore()
 
 //单选框
 const singleCheck = (selected,i)=>{
   i.selected=selected
 }
+//全选框
+const isAll = computed(()=>cartStore.cartList.every(item=>item.selected))
+const isAllClick = (selected)=>{
+  console.log(selected)
+  cartStore.cartList.forEach(item=>item.selected = selected)
+}
 const countChange=(a)=>{
   console.log(a)
 }
+
 </script>
 
 <template>
@@ -20,7 +29,7 @@ const countChange=(a)=>{
           <tr>
             <th width="120">
               <!--  多选框   -->
-              <el-checkbox/>
+              <el-checkbox :model-value="isAll" @change="isAllClick"/>
             </th>
             <th width="400">商品信息</th>
             <th width="220">单价</th>
