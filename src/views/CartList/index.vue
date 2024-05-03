@@ -1,6 +1,5 @@
 <script setup>
 import {useCartStore} from "@/stores/cart.js";
-import {computed} from "vue";
 
 const cartStore = useCartStore()
 
@@ -9,9 +8,7 @@ const singleCheck = (selected,i)=>{
   i.selected=selected
 }
 //全选框
-const isAll = computed(()=>cartStore.cartList.every(item=>item.selected))
 const isAllClick = (selected)=>{
-  console.log(selected)
   cartStore.cartList.forEach(item=>item.selected = selected)
 }
 const countChange=(a)=>{
@@ -29,7 +26,7 @@ const countChange=(a)=>{
           <tr>
             <th width="120">
               <!--  多选框   -->
-              <el-checkbox :model-value="isAll" @change="isAllClick"/>
+              <el-checkbox :model-value="cartStore.isAll" @change="isAllClick"/>
             </th>
             <th width="400">商品信息</th>
             <th width="220">单价</th>
@@ -90,8 +87,8 @@ const countChange=(a)=>{
       <!-- 操作栏 -->
       <div class="action">
         <div class="batch">
-          共 10 件商品，已选择 2 件，商品合计：
-          <span class="red">¥ 200.00 </span>
+          共 {{ cartStore.allCount }} 件商品，已选择 {{ cartStore.selectedCount }} 件，商品合计：
+          <span class="red">¥ {{ cartStore.selectedPrice }} </span>
         </div>
         <div class="total">
           <el-button size="large" type="primary" >下单结算</el-button>
