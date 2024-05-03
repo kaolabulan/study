@@ -1,7 +1,7 @@
 import {defineStore} from "pinia";
 import {ref,computed} from "vue";
 import {useUserStore} from "@/stores/user.js";
-import {insertCartAPI,findNewCartListAPI} from "@/api/index.js";
+import {insertCartAPI,findNewCartListAPI,delCartAPI} from "@/api/index.js";
 
 
 export const useCartStore = defineStore('cart',()=>{
@@ -9,6 +9,13 @@ export const useCartStore = defineStore('cart',()=>{
   const isLogin = computed(()=>userStore.userInfo.token)
   //1.定义state -- cartList 购物车列表存储数据
   const cartList = ref([])
+
+  const updateCart =async ()=>{
+    //获取最新的购物车列表
+    const res = await findNewCartListAPI()
+    //覆盖本地的购物车列表
+    cartList.value = res.result
+  }
   //2.定义action -- addCart
   const addCart =async (goods)=>{
     const {skuId,count} = goods
@@ -16,10 +23,7 @@ export const useCartStore = defineStore('cart',()=>{
       //登录加入购物车逻辑
       //加入购物车接口调用
       await insertCartAPI({skuId,count})
-      //获取最新的购物车列表
-      const res = await findNewCartListAPI()
-      //覆盖本地的购物车列表
-      cartList.value = res.result
+      await updateCart()
     }else {
       // 添加购物车操作
       // 已添加过 - count + 1
@@ -35,11 +39,19 @@ export const useCartStore = defineStore('cart',()=>{
 
   }
   //删除购物车
-  const delCart = (skuId)=>{
-    //1.splice 改变原数组  2.filter 不改变原数组
-    // cartList.value = cartList.value.filter((item)=>item.skuId!==skuId)
-    const delIndex = cartList.value.findIndex((item)=>item.skuId===skuId)
-    cartList.value.splice(delIndex,1)
+  const delCart =async (skuId)=>{
+    if (isLogin.value){
+      //登录调用删除接口
+      await delCartAPI([skuId])
+      await updateCart()
+
+    }else {
+      //1.splice 改变原数组  2.filter 不改变原数组
+      // cartList.value = cartList.value.filter((item)=>item.skuId!==skuId)
+      const delIndex = cartList.value.findIndex((item)=>item.skuId===skuId)
+      cartList.value.splice(delIndex,1)
+    }
+
   }
 
   //计算属性
