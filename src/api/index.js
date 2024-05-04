@@ -69,4 +69,17 @@ export const createOrderAPI = (data) => {
 }
 //支付页
 export const getOrderAPI = (id) => httpInstance.get( `/member/order/${id}`)
+//个人中心猜你喜欢
+export const getLikeListAPI = ({ limit = 4 }) => httpInstance({
+  url:'/goods/relevant',
+  params: {limit}
+})
+//个人中心我的订单
+export const getUserOrder = (params) =>httpInstance({
+  url:'/member/order',
+  method:'GET',
+  params
+})
+
+
 
