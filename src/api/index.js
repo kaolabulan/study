@@ -59,5 +59,12 @@ export const delCartAPI = (ids) => httpInstance({
 export const mergeCartAPI = (data)=>httpInstance({url:'/member/cart/merge',method:'post',data})
 export const getCheckoutInfoAPI = () => httpInstance.get('/member/order/pre')
 
-
+// 创建订单
+export const createOrderAPI = (data) => {
+  return httpInstance({
+    url: '/member/order',
+    method: 'POST',
+    data
+  })
+}
 
