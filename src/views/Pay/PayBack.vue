@@ -14,6 +14,7 @@ onMounted(()=>getOrder())
 
 
 <template>
+
   <div class="xtx-pay-page">
     <div class="container">
       <!-- 支付结果 -->
