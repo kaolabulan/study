@@ -67,4 +67,6 @@ export const createOrderAPI = (data) => {
     data
   })
 }
+//支付页
+export const getOrderAPI = (id) => httpInstance.get( `/member/order/${id}`)
 

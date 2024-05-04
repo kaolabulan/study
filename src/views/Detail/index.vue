@@ -21,15 +21,12 @@
   //sku被操作
   let skuObj = {}
   const skuChange = (sku)=>{
-    console.log(sku)
     skuObj = sku
   }
 
   //count
   const count = ref(1)
-  const countChange = (count)=>{
-    console.log(count)
-  }
+
 
   //添加购物车
   const addCart = ()=>{
